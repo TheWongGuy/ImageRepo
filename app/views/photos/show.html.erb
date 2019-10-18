@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<br>
+<div class="task-container columns is-multiline">
+  <div class="card column is-half is-offset-one-quarter">
+    <div class="card-content">
+      <h1 class="title is-1"><%= @photo.title %></h1>
+      <center>
+      <div class="image is-1by" style="max-width: 400px; max-height: 200;">
+        <%= image_tag(@photo.image) %>
+      </div>
+      <br>
+      <h3 class="title is-3">Share with this QR code!</h3>
+        <%= @qrsvg.html_safe %>
+        <%= button_to "Download QR Code!", qrcode_path(:id => @photo.id), method: "get", class: "button is-primary" %>
+      </center>
+      <p>
+        <strong>Caption:</strong>
+        <%= @photo.caption %>
+      </p>
+    </div>
+    <footer class="card-footer">
+      <p class="card-footer-item">
+        <span>
+          <%= link_to("Back", photos_path, class: "button is-info is-rounded") %>
+        </span>
+      </p>
+      <p class="card-footer-item">
+        <span>
+          <%= link_to("Edit", edit_photo_path(@photo), class: "button is-danger is-rounded") %>
+        </span>
+      </p>
+    </footer>
+  </div>
+</div>

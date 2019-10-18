@@ -1,0 +1,21 @@
+<%= simple_form_for(@photo) do |f| %>
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+<div class="field">
+  <div class="control">
+    <%= f.input :title, input_html: {class:"input"}, label_html: {class:"label"}, wrapper: false%>
+  </div>
+  <div class="control">
+    <%= f.input :caption, input_html: {class:"input"}, label_html: {class:"label"}, wrapper: false %>
+  </div>
+  <div class="control">
+      <!--<%= f.file_field :image, input_html: {class:"button is-primary is-rounded"}, label_html: {class:"button is-primary is-rounded"}, wrapper: false %> -->
+      <%= f.file_field :image, class: "file-label file-name", wrapper: false %>
+  </div>
+</div>
+
+<div class="form-actions">
+  <%= f.button :submit, class: "button is-primary is-rounded"%>
+</div>
+<% end %>

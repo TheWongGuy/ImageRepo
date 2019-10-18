@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<br>
+<div class="task-container columns is-multiline">
+  <div class="card column is-half is-offset-one-quarter">
+    <div class="card-content">
+      <h1 class="title is-1">Your Photos</h1>
+
+      <div class="columns is-multiline">
+        <% @photos.each do |photo| %>
+        <div class="column is-half">
+          <div class="box" style="max-width: 350px;">
+            <a href=<%= photo_path(photo) %> 
+              <figure class="image is-4by3" style="max-width:350;">
+              <%= image_tag(photo.image) %>
+              </figure>
+              <div class="media">
+                <div class="media-content" style="margin: 3px;">
+                </div>
+              </div>
+            </a>
+            <h6 class="title is-6" style="margin-top: 15px;"><%= photo.title %></h6>
+<!--          <%= link_to "Delete", photo, method: :delete, class: "button is-info is-warning" %> -->
+          <%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger"%>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <p class="card-footer-item">
+        <span>
+          <a href=<%= new_photo_path %> class="button is-primary is-rounded">Upload</a>
+        </span>
+      </p>
+      <p class="card-footer-item">
+        <span>
+          <%= link_to("Sign Out", destroy_user_session_path, method: :delete, class: "button is-info is-rounded") %>
+        </span>
+      </p>
+    </footer>
+  </div>
+</div>
